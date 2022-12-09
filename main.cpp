@@ -3,20 +3,15 @@
 #include <memory>
 #include <vector>
 #include "HashTable.hpp"
+#include "TheMostCommonSubSequence.hpp"
+#include "HashTableTests.hpp"
 
 int main()
 {
-    HashTable<int, int> map;
-    map[2] = 3;
-    map[2] = 4;
-    map[2] = 5;
-    map[3] = 4;
-    map[57729] = 5;
+    HashTableTests::allTestsTogether();
+    IMap<std::string, std::vector<int>>* map = TheMostCommonSubSequence("abobaabobaaboba", 1, 5);
+    for (auto& el : *map)
+        std::cout << el.first << " " << el.second << "\n";
 
-    map.print();
 
-    map.del(2);
-    map.print();
-
-    return 0;
 }

@@ -74,6 +74,11 @@ public:
         return m_Ptr->value;
     }
 
+    Node<T>* get()
+    {
+        return m_Ptr;
+    }
+
 private:
     Node<T>* m_Ptr;
 

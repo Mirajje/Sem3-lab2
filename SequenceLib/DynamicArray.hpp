@@ -59,6 +59,11 @@ public:
         return *m_Ptr;
     }
 
+    T* get()
+    {
+        return m_Ptr;
+    }
+
 private:
     T* m_Ptr;
 

@@ -8,6 +8,9 @@ template <class T>
 class ListSequenceIterator
 {
 public:
+    ListSequenceIterator()
+            : m_It(ListIterator<T>(nullptr)){}
+
     ListSequenceIterator(const ListIterator<T>& it)
             : m_It(it){}
 
@@ -19,7 +22,7 @@ public:
 
     ListSequenceIterator operator++(int)
     {
-        ArraySequenceIterator<T> temp = *this;
+        ListSequenceIterator<T> temp = *this;
         ++(*this);
         return temp;
     }
@@ -32,7 +35,7 @@ public:
 
     ListSequenceIterator operator--(int)
     {
-        ArraySequenceIterator<T> temp = *this;
+        ListSequenceIterator<T> temp = *this;
         --(*this);
         return temp;
     }
@@ -57,6 +60,11 @@ public:
     T& operator*()
     {
         return *m_It;
+    }
+
+    Node<T>* get()
+    {
+        return m_It.get();
     }
 
 private:

@@ -12,6 +12,9 @@ public:
     ArraySequenceIterator(const ArrayIterator<T>& it)
             : m_It(it){}
 
+    ArraySequenceIterator(T* ptr)
+            : m_It(ArrayIterator<T>(ptr)){}
+
     ArraySequenceIterator& operator++()
     {
         m_It ++;
@@ -60,6 +63,12 @@ public:
         return *m_It;
     }
 
+    T* get()
+    {
+        return m_It.get();
+    }
+
+
 private:
 
     ArrayIterator<T> m_It;
@@ -71,6 +80,7 @@ class ArraySequence : public Sequence<T>
 {
 private:
     DynamicArray<T>* m_Array;
+
 public:
     using Iterator = ArraySequenceIterator<T>;
 public:
@@ -90,6 +100,7 @@ public:
     const T& getFirst() const;
     const T& getLast() const;
     int getLength() const;
+    void resize(int new_Size);
     int find(const T& item) const;
 
 public:
@@ -202,6 +213,12 @@ template <class T>
 int ArraySequence<T>::getLength() const
 {
     return m_Array->getSize();
+}
+
+template <class T>
+void ArraySequence<T>::resize(int new_size)
+{
+    m_Array->resize(new_size);
 }
 
 template <class T>
