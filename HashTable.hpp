@@ -4,9 +4,6 @@
 #include "SequenceLib/Sequence_lib.h"
 #include <functional>
 
-#include "SequenceLib/Sequence_lib.h"
-#include <functional>
-
 template <class T>
 std::ostream& operator<<(std::ostream& out, const std::vector<T>& seq)
 {
